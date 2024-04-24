@@ -29,7 +29,7 @@ We have a request from a client to help them with a solution for a console banki
 
 The Business Analyst team working with the client has identified the following features that should be implemented:
 
-- A user should be able to interact with the application via a REPL interface to:
+- A user should should see the output of the application on the terminal:
   - Access an account (assuming each user will automatically have their details loaded into the program on startup)
   - Deposit funds
   - Withdraw funds - if they have sufficient balance to do so
@@ -70,13 +70,12 @@ In addition to these features, the client has asked for the following functional
 ## Tasks
 
 1. Explain the benefits of the software to the client - why they need it and how it will help them:
-    - What are the benefits of the software to the client?
     - What are the benefits of the software to the end user?
     - What are the benefits of the software to the business?
 2. From the requirements listed above, devise a set of user stories that describe the functionality that the client has requested
 3. From these user stories, create a domain model to describe how the objects will use messages to communicate with one another
 4. Using a test-driven approach, implement the code necessary to implement the functionality described in the user stories
-5. Create a program that will run in the terminal (including any user input) that demonstrates the functionality of the code based on the user stories and persists data to a file
+5. Create a program that will run in the terminal that demonstrates the functionality of the code based on the user stories
 
 After the submission deadline, you will be expected to perform a review of someone else's code.  Guidelines for this will be announced by your trainer.
 
@@ -220,9 +219,11 @@ After submission of your challenge attempt, your trainer will record and submit 
 Your trainer will also provide general feedback to the cohort via the Discord channel.
 
 ---
-
+<!--
 ## Further Tasks
 
 Based on your work here, the feedback you are given (both as a cohort and individually) and the feedback you give to others, you will be asked to create a SMART goal based on the areas of improvement that you have identified.  This will be submitted via Noodle.  For the next Challenge, you will be expected to show that you have implemented your SMART goals and that you have made progress towards achieving them.
 
 ---
+
+-->
