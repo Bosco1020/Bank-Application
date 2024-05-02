@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "challenge-2-test-framework",
   "main": "index.js",
-  "type" : "module",
+  "type": "module",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "node specRunner.js",
-    "start" : "node src/index.js"
+    "test": "jasmine",
+    "start": "node src/index.js"
   },
   "author": "connor boscherini",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^5.1.0"
+  }
 }
