@@ -18,6 +18,13 @@ describe("Account Tests:", () => {
             
             expect(testAccount instanceof (Account)).toBeTrue();
         });
+
+        it("Test2: Users account should contain name of their account", () => {
+            const demoName = "demoAccount";
+
+            testAccount.setName(demoName);
+            expect(testAccount.getName()).toBe(demoName);
+        });
     });
 
 });
