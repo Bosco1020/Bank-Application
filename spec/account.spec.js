@@ -27,5 +27,13 @@ describe("Account Tests:", () => {
         });
     });
 
+    describe("User Story 2 Tests:", () => {
+        it("Test2: Account.getFunds() returns a double", () => {
+            
+            expect(typeof(testAccount.getFunds()) === 'number').toBeTrue();
+        });
+
+    });
+
 });
     
