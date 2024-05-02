@@ -28,11 +28,15 @@ describe("Account Tests:", () => {
     });
 
     describe("User Story 2 Tests:", () => {
-        it("Test2: Account.getFunds() returns a double", () => {
+        it("Test1: Account.getFunds() returns a double", () => {
             
             expect(typeof(testAccount.getFunds()) === 'number').toBeTrue();
         });
 
+        it("Test2: The Accounts funds should be set to 0 by default", () => {
+            
+            expect(testAccount.getFunds()).toBe(0);
+        });
     });
 
 });
