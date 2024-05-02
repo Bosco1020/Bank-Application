@@ -47,6 +47,14 @@ describe("Account Tests:", () => {
             testAccount.deposit(testAmount);
             expect(testAccount.getFunds()).toBe(testAmount);
         });
+
+        it("Test2: deposit method should only accept an integer variable", () => {
+            
+            const testAmount = "1000";
+
+            testAccount.deposit(testAmount);
+            expect(testAccount.getFunds()).toBe(0);
+        });
     });
 });
     
