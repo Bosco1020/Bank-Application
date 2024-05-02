@@ -39,5 +39,14 @@ describe("Account Tests:", () => {
         });
     });
 
+    describe("User Story 3 Tests:", () => {
+        it("Test1: Account.deposit() should increase the accounts funds by the deposited amount", () => {
+            
+            const testAmount = 1000;
+
+            testAccount.deposit(testAmount);
+            expect(testAccount.getFunds()).toBe(testAmount);
+        });
+    });
 });
     
