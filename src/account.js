@@ -4,6 +4,7 @@ export default class Account {
 
     deposit(value) {
         if (typeof (value) !== 'number') { return; }
+        if (value < 0) { return; }
         this.#funds += value;
     }
 
