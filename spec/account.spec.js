@@ -70,10 +70,22 @@ describe("Account Tests:", () => {
             
             const startAmount = 1000;
             const testWithdrawal = 500;
+            
             testAccount.deposit(startAmount);
             
             testAccount.withdraw(testWithdrawal);
-            expect(testAccount.getFunds()).toBe(startAmount - testWithdrawal);
+            expect(testAccount.getFunds()).toBe(startAmount- testWithdrawal);
+        });
+
+        it("Test2: withdraw method should only accept an integer variable", () => {
+            
+            const startAmount = 1000;
+            const testWithdrawal = "500";
+            testAccount.deposit(startAmount);
+            
+            testAccount.withdraw(testWithdrawal);
+
+            expect(testAccount.getFunds()).toBe(startAmount);
         });
     });
 });

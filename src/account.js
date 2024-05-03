@@ -9,6 +9,7 @@ export default class Account {
     }
 
     withdraw(value) {
+        if (typeof (value) !== 'number') { return; }
         this.#funds -= value;
     }
 
@@ -17,4 +18,10 @@ export default class Account {
     getName() { return this.#name; }
 
     getFunds() { return this.#funds; }
+
+    /*#checkInput(input) {
+        if (typeof (input) === 'number') { return true; }
+        return false;
+        return (typeof (input) === 'number');
+    }*/
 }
