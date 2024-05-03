@@ -22,5 +22,12 @@ describe("Account Tests:", () => {
             expect(testTransaction.getFundsBefore()).toBe(testInput);
         });
 
+        it("Test1: Transactions has a variable for the transactionAmount that can be set", () => {
+            
+            const testInput = 1009;
+            testTransaction.setAmount(testInput);
+
+            expect(testTransaction.getAmount()).toBe(testInput);
+        });
     });
 });
