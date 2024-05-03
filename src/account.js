@@ -12,6 +12,7 @@ export default class Account {
     withdraw(value) {
         if (typeof (value) !== 'number') { return; }
         if (value < 0) { return; }
+        if (this.getFunds() < value) { return; }
         this.#funds -= value;
         //if(this.checkInput(value)) this.#funds -= value;
     }

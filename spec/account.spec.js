@@ -28,7 +28,7 @@ describe("Account Tests:", () => {
     });
 
     describe("User Story 2 Tests:", () => {
-        it("Test1: Account.getFunds() returns a double", () => {
+        it("Test1: Account.getFunds() returns a number", () => {
             
             expect(typeof(testAccount.getFunds()) === 'number').toBeTrue();
         });
@@ -92,6 +92,19 @@ describe("Account Tests:", () => {
             
             const startAmount = 1000;
             const testWithdrawal = -500;
+            testAccount.deposit(startAmount);
+            
+            testAccount.withdraw(testWithdrawal);
+            expect(testAccount.getFunds()).toBe(startAmount);
+        });
+    });
+
+    describe("User Story 5 Tests:", () => {
+        it("Test1: Account.withdraw() shouldn't complete if there aren't sufficient funds", () => {
+            
+            const startAmount = 500;
+            const testWithdrawal = 1000;
+            
             testAccount.deposit(startAmount);
             
             testAccount.withdraw(testWithdrawal);
