@@ -64,5 +64,17 @@ describe("Account Tests:", () => {
             expect(testAccount.getFunds()).toBe(0);
         });
     });
+
+    describe("User Story 4 Tests:", () => {
+        it("Test1: Account.withdraw() should decrease the accounts funds by the withdrawn amount", () => {
+            
+            const startAmount = 1000;
+            const testWithdrawal = 500;
+            testAccount.deposit(startAmount);
+            
+            testAccount.withdraw(testWithdrawal);
+            expect(testAccount.getFunds()).toBe(startAmount - testWithdrawal);
+        });
+    });
 });
     

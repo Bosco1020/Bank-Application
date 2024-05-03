@@ -8,6 +8,10 @@ export default class Account {
         this.#funds += value;
     }
 
+    withdraw(value) {
+        this.#funds -= value;
+    }
+
     setName(newName) { this.#name = newName; }
 
     getName() { return this.#name; }
