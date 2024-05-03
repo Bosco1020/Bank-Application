@@ -6,11 +6,14 @@ export default class Account {
         if (typeof (value) !== 'number') { return; }
         if (value < 0) { return; }
         this.#funds += value;
+        //if(this.checkInput(value)) this.#funds += value;
     }
 
     withdraw(value) {
         if (typeof (value) !== 'number') { return; }
+        if (value < 0) { return; }
         this.#funds -= value;
+        //if(this.checkInput(value)) this.#funds -= value;
     }
 
     setName(newName) { this.#name = newName; }
@@ -19,9 +22,14 @@ export default class Account {
 
     getFunds() { return this.#funds; }
 
-    /*#checkInput(input) {
-        if (typeof (input) === 'number') { return true; }
-        return false;
+    /*checkInput(input) {
+
+        if (typeof (value) !== 'number') { return false; }
+        if (value < 0) { return false; }
+        //if (value < 0) { return; }
+
+        //if (typeof (input) === 'number') { return true; }
+        return true;
         return (typeof (input) === 'number');
     }*/
 }

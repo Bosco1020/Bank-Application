@@ -87,6 +87,16 @@ describe("Account Tests:", () => {
 
             expect(testAccount.getFunds()).toBe(startAmount);
         });
+
+        it("Test3: withdraw method should only accept a positive integer variable", () => {
+            
+            const startAmount = 1000;
+            const testWithdrawal = -500;
+            testAccount.deposit(startAmount);
+            
+            testAccount.withdraw(testWithdrawal);
+            expect(testAccount.getFunds()).toBe(startAmount);
+        });
     });
 });
     
