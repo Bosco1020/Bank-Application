@@ -4,7 +4,7 @@ export default class Printer {
     }
     
     static printStatement(allTransactions) {
-        console.log("date       || credit  || debit   || balance");
+        console.log("date       || credit  || debit    || balance");
         for (let i = allTransactions.length - 1; i > -1; i--){
             if (allTransactions[i].getAmount() < 0)
             { this.printWithdrawal(allTransactions[i]); }
@@ -13,17 +13,17 @@ export default class Printer {
     }
 //allTransactions[i].getFundsBefore() < allTransactions[i].getAmount() + allTransactions[i].getFundsBefore()
     static printDeposit(transaction) {
-        console.log(this.printDate(transaction).padEnd(13) + 
-        this.printAmount(transaction).padEnd(22) + this.printFunds(transaction))
+        console.log(this.printDate(transaction).padEnd(13) +
+            this.printAmount(transaction).padEnd(9) + "||          ||" + this.printFunds(transaction));
     }
 
     static printWithdrawal(transaction) {
-        console.log(this.printDate(transaction).padEnd(24) + 
-        this.printAmount(transaction).padEnd(11) + this.printFunds(transaction))
+        console.log(this.printDate(transaction).padEnd(22) + "||" +
+            this.printAmount(transaction).padEnd(10) + "||" + this.printFunds(transaction));
     }
 
     static printDate(transaction) {
-        return transaction.getDate().toLocaleDateString('en-GB');
+        return transaction.getDate().toLocaleDateString('en-GB') + " ||";
     }
 
     static printAmount(transaction) {
