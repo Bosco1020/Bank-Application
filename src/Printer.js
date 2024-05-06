@@ -4,7 +4,7 @@ export default class Printer {
     }
     
     static printStatement(allTransactions) {
-        console.log("date       || credit  || debit  || balance");
+        console.log("date       || credit  || debit   || balance");
         for (let i = allTransactions.length - 1; i > -1; i--){
             if (allTransactions[i].getAmount() < 0)
             { this.printWithdrawal(allTransactions[i]); }
@@ -27,7 +27,7 @@ export default class Printer {
     }
 
     static printAmount(transaction) {
-        let amount = " "; amount += transaction.getAmount();
+        let amount = " "; amount += transaction.getAmount().toFixed(2);
         return amount;
     }
 
