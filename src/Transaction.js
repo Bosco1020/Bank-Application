@@ -2,6 +2,7 @@ export default class Transaction {
 
     #fundsBefore;
     #amount;
+    #transactionDate;
 
     getFundsBefore() {
         return this.#fundsBefore;
@@ -17,5 +18,13 @@ export default class Transaction {
 
     setAmount(value) {
         this.#amount = value;
+    }
+
+    getDate() {
+        return this.#transactionDate;
+    }
+
+    setDate(newDate) {
+        this.#transactionDate = newDate;
     }
 }
