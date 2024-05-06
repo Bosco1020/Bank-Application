@@ -12,12 +12,20 @@ export default class Account {
         //if(this.checkInput(value)) this.#funds += value;
     }
 
+    deposit(value) {
+        if (!this.checkInput(value)) {
+            return;
+        }
+        this.#funds += value;
+    }
+
     withdraw(value) {
-        if (typeof (value) !== 'number') { return; }
-        if (value < 0) { return; }
+        if (!this.checkInput(value)) {
+            return;
+        }
+        
         if (this.getFunds() < value) { return; }
         this.#funds -= value;
-        //if(this.checkInput(value)) this.#funds -= value;
     }
 
     setName(newName) { this.#name = newName; }
@@ -31,21 +39,24 @@ export default class Account {
     }
 
     createTransaction(amount, date) {
+        if (!this.checkInput(amount)) { return; }
+        if (amount < 0) { amount = amount * -1; this.withdraw(amount) }
+        else { this.deposit(amount) }
+
+        this.#allTransactions.push(this.buildTransaction(amount, date));
+    }
+
+    buildTransaction(amount, date) {
         let newTransaction = new Transaction();
         newTransaction.setAmount(amount);
         newTransaction.setDate(date);
-        newTransaction.getFundsBefore(this.#funds);
-        this.#allTransactions.push(newTransaction);
+        newTransaction.setFundsBefore(this.#funds - amount);
+        return newTransaction;
     }
 
-    /*checkInput(input) {
-
-        if (typeof (value) !== 'number') { return false; }
-        if (value < 0) { return false; }
-        //if (value < 0) { return; }
-
-        //if (typeof (input) === 'number') { return true; }
+    checkInput(input) {
+        if (typeof (input) !== 'number') { return false; }
+        if (input <= 0) { return false; }
         return true;
-        return (typeof (input) === 'number');
-    }*/
+    }
 }

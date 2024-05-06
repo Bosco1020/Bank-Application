@@ -114,9 +114,6 @@ describe("Account Tests:", () => {
 
     describe("User Story 8 Tests:", () => {
         it("Test1: createTransaction makes a new transaction and adds it to the account", () => {
-            //testAccount.getAllTransactions()[0].getAmount();
-            //console.log(testAccount.getAllTransactions());
-            //console.log(testAccount.getAllTransactions());
             const testDate = new Date("2009-04-01");
             const testAmount = 1000;
             testAccount.createTransaction(testAmount, testDate);
@@ -129,6 +126,28 @@ describe("Account Tests:", () => {
 
             expect(expected).toBeTrue;
         });
+
+        it("Test2: making a deposit creates a new transaction in the account", () => {
+            
+            const current = testAccount.getAllTransactions().length;
+            
+            const testDate = new Date("1980-12-21");
+            const testAmount = 1000;
+            testAccount.createTransaction(testAmount, testDate);
+
+            expect(testAccount.getAllTransactions().length).toBe(current + 1);
+        });
+
+         it("Test3: making a deposit by making a Transaction should increase the accounts funds by the deposited amount", () => {
+            const current = testAccount.getFunds();
+
+            const testDate = new Date("1980-12-21");
+            const testAmount = 1000;
+            testAccount.createTransaction(testAmount, testDate);
+            
+            expect(testAccount.getFunds()).toBe(current + testAmount);
+        });
+
     });
 });
     
