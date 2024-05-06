@@ -14,7 +14,7 @@ export default class Printer {
     }
 
     static printDate(transaction) {
-        console.log(transaction.getDate());
+        console.log(transaction.getDate().toLocaleDateString('en-US'));
     }
 
     static printAmount(transaction) {

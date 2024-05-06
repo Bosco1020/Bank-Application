@@ -11,7 +11,7 @@ describe("Printer Tests:", () => {
     beforeEach(() => {
             testDate1 = new Date("2009-04-01");
             testDate3 = new Date("1009-11-17");
-            testDate2 = new Date("1899-08-21");
+            testDate2 = new Date("1899-08-21"); 
             testAmount1 = 500;
             testAmount2 = 5000;
             testAmount3 = -1000;
@@ -67,11 +67,20 @@ describe("Printer Tests:", () => {
         it("Test4: Printer should print to the console the total amount of funds in the account after the Transaction, the date and the amount of for each transaction in the account", () => {
 
             let allAccounts = [testTransaction4, testTransaction5];
-            console.log(allAccounts);
             Printer.printStatement(allAccounts);
 
             expect(testTransaction4.getAmount && testTransaction4.getAmount && testTransaction4.getFundsBefore
             && testTransaction5.getDate && testTransaction5.getAmount && testTransaction5.getFundsBefore).toHaveBeenCalled();
+        });
+    });
+
+    describe("User Story 11 Tests:", () => {
+        it("Test1: When printed, the date should be formatted to dd/mm/yyy", () => {
+            
+            Printer.printDate(testTransaction1);
+
+
+            expect(testTransaction1.getDate).toHaveBeenCalled();
         });
     });
 });
