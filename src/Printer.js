@@ -19,4 +19,8 @@ export default class Printer {
     static printAmount(transaction) {
         console.log(transaction.getAmount());
     }
+
+    static printFunds(transaction) {
+        console.log(transaction.getFundsBefore() + transaction.getAmount());
+    }
 }

@@ -2,7 +2,8 @@ import Printer from "../src/Printer.js";
 
 let testDate1, testDate2, testDate3;
 let testAmount1, testAmount2, testAmount3;
-let testTransaction1, testTransaction2;
+let testTransaction1, testTransaction2, testTransaction3;
+let testFunds1, testFunds2, testFunds3;
 
 describe("Printer Tests:", () => {
 
@@ -13,8 +14,12 @@ describe("Printer Tests:", () => {
             testAmount1 = 500;
             testAmount2 = 5000;
             testAmount3 = -1000;
+            testFunds1 = 10000;
+            testFunds2 = 3008;
+            testFunds3 = 250;
             testTransaction1 = jasmine.createSpyObj("fake", { getDate: testDate1 });
             testTransaction2 = jasmine.createSpyObj("fake", { getAmount: testAmount1 });
+            testTransaction3 = jasmine.createSpyObj("fake", { getFundsBefore: testFunds1 }, { getAmount: () => testAmount2 });
     });
 
     afterEach(() => {
@@ -24,6 +29,9 @@ describe("Printer Tests:", () => {
         testAmount1 = undefined;
         testAmount2 = undefined;
         testAmount3 = undefined;
+        testFunds1 = undefined;
+        testFunds2 = undefined;
+        testFunds3 = undefined;
         testTransaction1 = undefined;
         testTransaction2 = undefined;
     });
@@ -41,6 +49,13 @@ describe("Printer Tests:", () => {
             Printer.printAmount(testTransaction2);
 
             expect(testTransaction2.getAmount).toHaveBeenCalled();
+        });
+
+        it("Test2: Printer should print to the console the total amount of funds in the account after the Transaction", () => {
+
+            Printer.printFunds(testTransaction3);
+
+            expect(testTransaction3.getFundsBefore).toHaveBeenCalled();
         });
     });
 });
