@@ -147,7 +147,19 @@ describe("Account Tests:", () => {
             
             expect(testAccount.getFunds()).toBe(current + testAmount);
         });
+    });
 
+    describe("User Story 9 Tests:", () => {
+        it("Test1: making a withdrawal makes a new Transaction object with the details of the deposit and adds it to the array", () => {
+            const current = testAccount.getAllTransactions().length;
+            testAccount.setFunds(2000);
+            
+            const testDate = new Date("1980-12-21");
+            const testAmount = -1000;
+            testAccount.createTransaction(testAmount, testDate);
+
+            expect(testAccount.getAllTransactions().length).toBe(current + 1);
+        });
     });
 });
     

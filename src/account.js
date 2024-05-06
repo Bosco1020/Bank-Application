@@ -34,14 +34,16 @@ export default class Account {
 
     getFunds() { return this.#funds; }
 
+    setFunds(value) { this.#funds += value; }
+
     getAllTransactions() {
         return this.#allTransactions;
     }
 
     createTransaction(amount, date) {
-        if (!this.checkInput(amount)) { return; }
-        if (amount < 0) { amount = amount * -1; this.withdraw(amount) }
-        else { this.deposit(amount) }
+        if (amount < 0) { amount = amount * -1;
+            if (!this.checkInput(amount)) { return; } this.withdraw(amount) }
+        else { if (!this.checkInput(amount)) { return; } this.deposit(amount) }
 
         this.#allTransactions.push(this.buildTransaction(amount, date));
     }
