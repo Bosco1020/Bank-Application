@@ -160,6 +160,17 @@ describe("Account Tests:", () => {
 
             expect(testAccount.getAllTransactions().length).toBe(current + 1);
         });
+
+        it("Test2: making a withdrawal by making a Transaction should decrease the accounts funds by the deposited amount", () => {
+            testAccount.setFunds(2000);
+            const current = testAccount.getFunds();
+
+            const testDate = new Date("1980-12-21");
+            const testAmount = -1000;
+            testAccount.createTransaction(testAmount, testDate);
+            
+            expect(testAccount.getFunds()).toBe(current + testAmount);
+        });
     });
 });
     
