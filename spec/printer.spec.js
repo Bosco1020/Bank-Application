@@ -3,6 +3,7 @@ import Printer from "../src/Printer.js";
 let testDate1, testDate2, testDate3;
 let testAmount1, testAmount2, testAmount3;
 let testTransaction1, testTransaction2, testTransaction3;
+let testTransaction4, testTransaction5;
 let testFunds1, testFunds2, testFunds3;
 
 describe("Printer Tests:", () => {
@@ -20,6 +21,8 @@ describe("Printer Tests:", () => {
             testTransaction1 = jasmine.createSpyObj("fake", { getDate: testDate1 });
             testTransaction2 = jasmine.createSpyObj("fake", { getAmount: testAmount1 });
             testTransaction3 = jasmine.createSpyObj("fake", { getFundsBefore: testFunds1 }, { getAmount: () => testAmount2 });
+            testTransaction4 = jasmine.createSpyObj("fake", { getAmount: testAmount2, getFundsBefore: testFunds2, getDate: testDate2});
+            testTransaction5 = jasmine.createSpyObj("fake", { getAmount: testAmount3 , getFundsBefore: testFunds3, getDate: testDate3});
     });
 
     afterEach(() => {
@@ -34,6 +37,9 @@ describe("Printer Tests:", () => {
         testFunds3 = undefined;
         testTransaction1 = undefined;
         testTransaction2 = undefined;
+        testTransaction3 = undefined;
+        testTransaction4 = undefined;
+        testTransaction5 = undefined;
     });
 
     describe("User Story 10 Tests:", () => {
@@ -51,11 +57,21 @@ describe("Printer Tests:", () => {
             expect(testTransaction2.getAmount).toHaveBeenCalled();
         });
 
-        it("Test2: Printer should print to the console the total amount of funds in the account after the Transaction", () => {
+        it("Test3: Printer should print to the console the total amount of funds in the account after the Transaction", () => {
 
             Printer.printFunds(testTransaction3);
 
             expect(testTransaction3.getFundsBefore).toHaveBeenCalled();
+        });
+
+        it("Test4: Printer should print to the console the total amount of funds in the account after the Transaction, the date and the amount of for each transaction in the account", () => {
+
+            let allAccounts = [testTransaction4, testTransaction5];
+            console.log(allAccounts);
+            Printer.printStatement(allAccounts);
+
+            expect(testTransaction4.getAmount && testTransaction4.getAmount && testTransaction4.getFundsBefore
+            && testTransaction5.getDate && testTransaction5.getAmount && testTransaction5.getFundsBefore).toHaveBeenCalled();
         });
     });
 });

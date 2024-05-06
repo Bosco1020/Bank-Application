@@ -9,6 +9,7 @@ export default class Printer {
         for (let i = 0; i < allTransactions.length; i++){
             this.printDate(allTransactions[i]);
             this.printAmount(allTransactions[i]);
+            this.printFunds(allTransactions[i]);
         }
     }
 
