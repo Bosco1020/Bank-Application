@@ -5,9 +5,18 @@ export default class Printer {
     
     static printStatement(allTransactions) {
         //console.log(allTransactions.getDate());
-        console.log(allTransactions);
+        //console.log(allTransactions);
         for (let i = 0; i < allTransactions.length; i++){
-            console.log(allTransactions[i].getDate());
+            this.printDate(allTransactions[i]);
+            this.printAmount(allTransactions[i]);
         }
+    }
+
+    static printDate(transaction) {
+        console.log(transaction.getDate());
+    }
+
+    static printAmount(transaction) {
+        console.log(transaction.getAmount());
     }
 }
