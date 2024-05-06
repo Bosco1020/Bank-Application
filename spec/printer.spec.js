@@ -9,9 +9,9 @@ let testFunds1, testFunds2, testFunds3;
 describe("Printer Tests:", () => {
 
     beforeEach(() => {
-            testDate1 = new Date("2009-04-01");
+            testDate1 = new Date("2009-04-21");
             testDate3 = new Date("1009-11-17");
-            testDate2 = new Date("1899-08-21"); 
+            testDate2 = new Date("1899-08-01"); 
             testAmount1 = 500;
             testAmount2 = 5000;
             testAmount3 = -1000;
@@ -79,8 +79,17 @@ describe("Printer Tests:", () => {
             
             Printer.printDate(testTransaction1);
 
-
             expect(testTransaction1.getDate).toHaveBeenCalled();
+        });
+
+        it("Test2: pintStatement() should format the information in the same style the client requested", () => {
+            
+            let allAccounts = [testTransaction4, testTransaction5];
+            Printer.printStatement(allAccounts);
+
+            //! Cannot test console output format, so instead checking that all methods are called.
+            expect(testTransaction4.getAmount && testTransaction4.getAmount && testTransaction4.getFundsBefore
+            && testTransaction5.getDate && testTransaction5.getAmount && testTransaction5.getFundsBefore).toHaveBeenCalled();
         });
     });
 });

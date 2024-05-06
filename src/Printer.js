@@ -4,24 +4,35 @@ export default class Printer {
     }
     
     static printStatement(allTransactions) {
-        //console.log(allTransactions.getDate());
-        //console.log(allTransactions);
+        console.log("date       || credit  || debit  || balance");
         for (let i = 0; i < allTransactions.length; i++){
-            this.printDate(allTransactions[i]);
-            this.printAmount(allTransactions[i]);
-            this.printFunds(allTransactions[i]);
+            if (allTransactions[i].getAmount() < 0)
+            { this.printWithdrawal(allTransactions[i]); return; }
+            else { this.printDeposit(allTransactions[i]); }
         }
     }
 
+    static printDeposit(transaction) {
+        console.log(this.printDate(transaction).padEnd(13) + 
+        this.printAmount(transaction).padEnd(22) + this.printFunds(transaction))
+    }
+
+    static printWithdrawal(transaction) {
+        console.log(this.printDate(transaction).padEnd(24) + 
+        this.printAmount(transaction).padEnd(11) + this.printFunds(transaction))
+    }
+
     static printDate(transaction) {
-        console.log(transaction.getDate().toLocaleDateString('en-US'));
+        return transaction.getDate().toLocaleDateString('en-GB');
     }
 
     static printAmount(transaction) {
-        console.log(transaction.getAmount());
+        let amount = " "; amount += transaction.getAmount();
+        return amount;
     }
 
     static printFunds(transaction) {
-        console.log(transaction.getFundsBefore() + transaction.getAmount());
+        let funds = " "; funds += transaction.getFundsBefore() + transaction.getAmount();
+        return funds;
     }
 }
