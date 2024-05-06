@@ -1,6 +1,9 @@
+import Transaction from "./Transaction.js";
+
 export default class Account {
     #name;
     #funds = 0;
+    #allTransactions = [];
 
     deposit(value) {
         if (typeof (value) !== 'number') { return; }
@@ -22,6 +25,18 @@ export default class Account {
     getName() { return this.#name; }
 
     getFunds() { return this.#funds; }
+
+    getAllTransactions() {
+        return this.#allTransactions;
+    }
+
+    createTransaction(amount, date) {
+        let newTransaction = new Transaction();
+        newTransaction.setAmount(amount);
+        newTransaction.setDate(date);
+        newTransaction.getFundsBefore(this.#funds);
+        this.#allTransactions.push(newTransaction);
+    }
 
     /*checkInput(input) {
 

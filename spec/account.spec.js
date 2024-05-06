@@ -111,5 +111,24 @@ describe("Account Tests:", () => {
             expect(testAccount.getFunds()).toBe(startAmount);
         });
     });
+
+    describe("User Story 8 Tests:", () => {
+        it("Test1: createTransaction makes a new transaction and adds it to the account", () => {
+            //testAccount.getAllTransactions()[0].getAmount();
+            //console.log(testAccount.getAllTransactions());
+            //console.log(testAccount.getAllTransactions());
+            const testDate = new Date("2009-04-01");
+            const testAmount = 1000;
+            testAccount.createTransaction(testAmount, testDate);
+            expected = false;
+            //check both amount & date are correct
+            if (testAccount.getAllTransactions()[0].getAmount() === testAmount
+                && testAccount.getAllTransactions()[0].getDate() === testDate) {
+                expected = true;
+                }
+
+            expect(expected).toBeTrue;
+        });
+    });
 });
     
