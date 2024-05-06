@@ -9,7 +9,6 @@ export default class Account {
         if (typeof (value) !== 'number') { return; }
         if (value < 0) { return; }
         this.#funds += value;
-        //if(this.checkInput(value)) this.#funds += value;
     }
 
     deposit(value) {
@@ -20,10 +19,7 @@ export default class Account {
     }
 
     withdraw(value) {
-        if (!this.checkInput(value)) {
-            return;
-        }
-        
+        if (!this.checkInput(value)) { return; }
         if (this.getFunds() < value) { return; }
         this.#funds -= value;
     }
@@ -40,12 +36,15 @@ export default class Account {
         return this.#allTransactions;
     }
 
+    // if input < 0, make +'ve for shared maths
+    // if input doesn't pass checkInput, then returns nothing
+    // Otherwise, calls either withdraw or deposit depending on if +'ve or -'ve
     createTransaction(amount, date) {
         if (amount < 0) { amount = amount * -1;
-            if (!this.checkInput(amount)) { return; } this.withdraw(amount) }
-        else { if (!this.checkInput(amount)) { return; } this.deposit(amount) }
-
-        this.#allTransactions.push(this.buildTransaction(amount, date));
+            if (!this.checkInput(amount) || this.getFunds() < amount) { return; } this.withdraw(amount);
+            this.#allTransactions.push(this.buildTransaction(amount * -1, date)) }
+        else { if (!this.checkInput(amount)) { return; } this.deposit(amount);
+            this.#allTransactions.push(this.buildTransaction(amount, date)); }
     }
 
     buildTransaction(amount, date) {
@@ -56,6 +55,7 @@ export default class Account {
         return newTransaction;
     }
 
+    // Checks if the input is a number & if it's +'ve
     checkInput(input) {
         if (typeof (input) !== 'number') { return false; }
         if (input <= 0) { return false; }

@@ -5,13 +5,13 @@ export default class Printer {
     
     static printStatement(allTransactions) {
         console.log("date       || credit  || debit  || balance");
-        for (let i = 0; i < allTransactions.length; i++){
+        for (let i = allTransactions.length - 1; i > -1; i--){
             if (allTransactions[i].getAmount() < 0)
-            { this.printWithdrawal(allTransactions[i]); return; }
+            { this.printWithdrawal(allTransactions[i]); }
             else { this.printDeposit(allTransactions[i]); }
         }
     }
-
+//allTransactions[i].getFundsBefore() < allTransactions[i].getAmount() + allTransactions[i].getFundsBefore()
     static printDeposit(transaction) {
         console.log(this.printDate(transaction).padEnd(13) + 
         this.printAmount(transaction).padEnd(22) + this.printFunds(transaction))
