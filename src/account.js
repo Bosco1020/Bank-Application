@@ -6,12 +6,6 @@ export default class Account {
     #allTransactions = [];
 
     deposit(value) {
-        if (typeof (value) !== 'number') { return; }
-        if (value < 0) { return; }
-        this.#funds += value;
-    }
-
-    deposit(value) {
         if (!this.checkInput(value)) {
             return;
         }
@@ -47,6 +41,7 @@ export default class Account {
             this.#allTransactions.push(this.buildTransaction(amount, date)); }
     }
 
+    // Build a Transaction Obj. from inputs
     buildTransaction(amount, date) {
         let newTransaction = new Transaction();
         newTransaction.setAmount(amount);
